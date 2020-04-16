@@ -20,22 +20,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.media.Rating;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.kodeintel.sample.video.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import com.kodeintel.sample.video.responsemodel.GoogleVideo;
+import com.kodeintel.sample.video.responsemodel.VideoResponseModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * The VideoDbBuilder is used to grab a JSON file from a server and parse the data
@@ -53,7 +50,9 @@ public class VideoDbBuilder {
     public static final String TAG_TITLE = "title";
 
     private static final String TAG = "VideoDbBuilder";
-
+    private static final String sBgImageUrl = "https://promexpo.am/Catalogs/PAN/2017/files/extfiles/mainbgImgUrl.jpg";
+    private static final String sStudio = "JOS";
+    
     private Context mContext;
 
     /**
@@ -197,4 +196,56 @@ public class VideoDbBuilder {
         }
         return null;
     }*/
+  
+  
+  /**
+   * Takes the contents of a JSON object and populates the database
+   *
+   */
+  public List<ContentValues> buildMediaRetrofitObject(List<GoogleVideo> googleVideoList) {
+    
+    List<ContentValues> videosToInsert = new ArrayList<>();
+    for (GoogleVideo googlevideo:googleVideoList) {
+      for (VideoResponseModel videoResponseModel:googlevideo.getVideos()) {
+        // If there are no URLs, skip this video entry.
+        if (videoResponseModel.getSources() == null || videoResponseModel.getSources().size()== 0) {
+          continue;
+        }
+        
+        ContentValues videoValues = new ContentValues();
+        videoValues.put(VideoContract.VideoEntry.COLUMN_CATEGORY, googlevideo.getCategory());
+        videoValues.put(VideoContract.VideoEntry.COLUMN_NAME, videoResponseModel.getTitle());
+        videoValues.put(VideoContract.VideoEntry.COLUMN_DESC, videoResponseModel.getDescription());
+        videoValues.put(VideoContract.VideoEntry.COLUMN_VIDEO_URL, videoResponseModel.getSources().get(0));
+        videoValues.put(VideoContract.VideoEntry.COLUMN_CARD_IMG, videoResponseModel.getCard());
+        videoValues.put(VideoContract.VideoEntry.COLUMN_BG_IMAGE_URL, sBgImageUrl);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_STUDIO, sStudio);
+        //videoValues.put(VideoContract.VideoEntry.COLUMN_FAVOURITE,isFavourite);
+        // Fixed defaults.
+        videoValues.put(VideoContract.VideoEntry.COLUMN_CONTENT_TYPE, "video/mp4");
+        videoValues.put(VideoContract.VideoEntry.COLUMN_IS_LIVE, false);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG, "2.0");
+        videoValues.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR, 2014);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_DURATION, 0);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_STYLE,
+            Rating.RATING_5_STARS);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_SCORE, 3.5f);
+        if (mContext != null) {
+          videoValues.put(VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE,
+              mContext.getResources().getString(R.string.buy_2));
+          videoValues.put(VideoContract.VideoEntry.COLUMN_RENTAL_PRICE,
+              mContext.getResources().getString(R.string.rent_2));
+          videoValues.put(VideoContract.VideoEntry.COLUMN_ACTION,
+              mContext.getResources().getString(R.string.global_search));
+        }
+    
+        // TODO: Get these dimensions.
+        videoValues.put(VideoContract.VideoEntry.COLUMN_VIDEO_WIDTH, 1280);
+        videoValues.put(VideoContract.VideoEntry.COLUMN_VIDEO_HEIGHT, 720);
+    
+        videosToInsert.add(videoValues);
+      }
+    }
+    return videosToInsert;
+  }
 }
