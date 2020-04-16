@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.kodeintel.sample.video"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion = '29.0.3'
+}
+
+dependencies {
+
+    implementation 'com.vmax.android.ads.aar:vmax@aar'
+    implementation 'com.android.volley:volley:1.1.1'
+    compile(name:'REL-moat-mobile-app-kit-2.4.2', ext:'aar')
+
+
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.recommendation:recommendation:1.0.0'
+    implementation 'androidx.leanback:leanback-preference:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.8'
+    implementation 'com.google.android.exoplayer:extension-leanback:2.10.8'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.8'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.8'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.8'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.10.8'
+
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}

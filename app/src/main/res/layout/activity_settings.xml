@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?><!--Header Layout-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/search_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="top|end"
+        android:orientation="horizontal"
+        android:paddingStart="40dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="@dimen/lh_text_width"
+            android:layout_height="@dimen/lh_text_height"
+            android:layout_marginTop="@dimen/lh_margin_top"
+            android:layout_marginEnd="@dimen/lh_text_margin_end"
+            android:gravity="top|right"
+            android:text="Settings"
+            android:textColor="#E6E6E6"
+            android:textSize="@dimen/lh_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="105dp"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:rowCount="1"
+        tools:context=".ui.setting.SettingPage">
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/privacyPolicy"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusRight="@id/faq"
+            app:cardBackgroundColor="@drawable/settings_card_selector"
+            card_view:cardCornerRadius="6dp">
+
+            <ImageView
+                android:id="@+id/ppiv"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_privacy" />
+
+            <TextView
+                android:id="@+id/privacyPolicy_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:text="Privacy Policy"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/faq"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/privacyPolicy"
+            android:nextFocusRight="@id/tnc"
+            app:cardBackgroundColor="@drawable/settings_card_selector"
+            card_view:cardCornerRadius="6dp">
+
+            <ImageView
+                android:id="@+id/faqiv"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_faq" />
+
+            <TextView
+                android:id="@+id/faq_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:text="FAQ"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tnc"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/faq"
+            android:nextFocusRight="@id/version"
+            app:cardBackgroundColor="@drawable/settings_card_selector"
+            card_view:cardCornerRadius="6dp">
+
+            <ImageView
+                android:id="@+id/tnciv"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_tnc" />
+
+            <TextView
+                android:id="@+id/tnc_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Terms &amp; Conditions"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/version"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/tnc"
+            app:cardBackgroundColor="@drawable/settings_card_selector"
+            card_view:cardCornerRadius="6dp">
+
+            <TextView
+                android:id="@+id/version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Version 0.2.6"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+</LinearLayout>

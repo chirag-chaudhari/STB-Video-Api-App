@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (c) 2016 The Android Open Source Project
+     Modifications Copyright (C) 2020 <your KodeIntel
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <color name="background_gradient_start">#1b161d</color>
+    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="fastlane_background">#0096a6</color>
+    <color name="search_opaque">#ffaa3f</color>
+    <color name="selected_background">#ffaa3f</color>
+
+    <color name="default_background">#0096a6</color>
+    <color name="icon_background">#4A4F51</color>
+    <color name="icon_alt_background">#2A2F51</color>
+
+    <!-- splash Screen Colors -->
+    <color name="splash_background">#2E323C</color>
+    <color name="splash_text_color">#D6FFFFFF</color>
+
+    <color name="button_select">#EBEBEB</color>
+    <color name="button_un_select">#2E323C</color>
+
+    <color name="lb_tv_white">#000000</color>
+
+    <color name="lh_background_color">#D2D5D3</color>
+    <color name="search_background">#F2121212</color>
+    <color name="menu_background">#2E323C</color>
+    <color name="lb_guidedactions_background">@color/menu_background</color>
+    <color name="lb_guidedactions_background_dark">@color/lh_background_color</color>
+    <color name="lb_guidedactions_item_unselected_text_color">@color/lh_background_color</color>
+</resources>

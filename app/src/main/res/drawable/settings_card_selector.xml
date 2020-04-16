@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--  Active tab -->
+    <item android:color="@color/button_select" android:state_focused="true" />
+
+    <!--  Inactive tab -->
+    <item android:color="@color/button_un_select" android:state_focused="false" />
+
+</selector>
